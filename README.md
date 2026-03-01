@@ -1,14 +1,12 @@
 # Stockerl
 
-## Project Overview
-
 Stockerl is a **Reinforcement Learning (RL)** agent trained to execute optimal trading strategies for Amazon (AMZN) stock. The agent is built using the **Proximal Policy Optimization (PPO)** algorithm and a custom-built environment following the **Gymnasium** (formerly OpenAI Gym) standard.
 
 The goal is to maximize the portfolio's risk-adjusted returns by dynamically managing cash reserves and stock holdings.
 
 ---
 
-## 1. Environment Architecture
+## Environment Architecture
 
 This project utilizes a **from-scratch custom Gymnasium environment**. This allows for strict adherence to the portfolio math required for academic evaluation.
 
@@ -35,7 +33,7 @@ While the initial requirement suggested discrete actions, this implementation us
 
 ---
 
-## 2. Reward Function
+## Reward Function
 
 To ensure training stability and account for compounding growth, the reward $r_t$ is calculated using the **logarithmic return** of the Total Net Worth ($V_{total}$).
 
@@ -47,7 +45,7 @@ $$r_t = \ln\left(\frac{V_{total, t}}{V_{total, t-1}}\right)$$
 
 ---
 
-## 3. Trading Logic & Constraints
+## Trading Logic & Constraints
 
 * **Transaction Execution:** All trades are executed at the current step's closing price.
 * **Portfolio Update:** The $V_{invested}$ value is updated at every step regardless of the action, reflecting the real-time market volatility of the held assets.
@@ -55,7 +53,7 @@ $$r_t = \ln\left(\frac{V_{total, t}}{V_{total, t-1}}\right)$$
 
 ---
 
-## 4. Evaluation Metrics
+## Evaluation Metrics
 
 The agent is evaluated against a **Buy and Hold (B&H)** baseline on out-of-sample test data using the following metrics:
 
@@ -66,12 +64,12 @@ The agent is evaluated against a **Buy and Hold (B&H)** baseline on out-of-sampl
 
 ---
 
-## 5. Tech stack
+## Tech stack
 
 * **Language:** Python 3.x
-* **RL Framework:** Stable Baselines3 (PPO implementation)
+* **RL Framework:** Stable Baselines3
 * **Environment:** Gymnasium
-* **Data Source:** `yfinance` (Amazon historical daily data)
+* **Data Source:** `yfinance`
 * **Analysis:** NumPy, Pandas, Matplotlib
 
 ---
