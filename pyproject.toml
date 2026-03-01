@@ -9,4 +9,5 @@ dependencies = [
     "matplotlib>=3.10.8",
     "numpy>=2.4.1",
     "stable-baselines3>=2.7.1",
+    "yfinance>=1.2.0",
 ]
