@@ -1,13 +1,17 @@
 [project]
 name = "stock-trading-agent"
 version = "0.1.0"
-description = "Add your description here"
+description = "A reinforcement learning agent for stock trading using PPO"
 readme = "README.md"
 requires-python = ">=3.11"
 dependencies = [
-    "gym-anytrading>=2.0.0",
+    "gymnasium>=0.29.0",
     "matplotlib>=3.10.8",
     "numpy>=2.4.1",
+    "pandas>=2.0.0",
     "stable-baselines3>=2.7.1",
     "yfinance>=1.2.0",
+    "tqdm>=4.65.0",
+    "tensorboard>=2.20.0",
+    "rich>=14.3.3",
 ]
