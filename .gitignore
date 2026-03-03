@@ -220,3 +220,4 @@ src/logs
 *.pkl
 *.zip
 *.png
+*.txt
