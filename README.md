@@ -104,20 +104,24 @@ A plot comparing the agent's portfolio value vs. buy-and-hold is saved to `tradi
 ### Installation
 
 ```bash
-pip install -e .
+# Clone the repository
+git clone https://github.com/Rosvend/stockerl.git
+cd stockerl
+
+# Install dependencies using uv
+uv sync
 ```
 
 Or install dependencies directly:
 
 ```bash
-pip install gymnasium stable-baselines3 yfinance numpy pandas matplotlib tensorboard tqdm rich
+uv add gymnasium stable-baselines3 yfinance numpy pandas matplotlib tensorboard tqdm rich
 ```
 
 ### Running
 
 ```bash
-cd src
-python main.py
+uv run src/main.py
 ```
 
 This will:
@@ -127,11 +131,13 @@ This will:
 4. Print a summary comparing agent vs. buy-and-hold returns
 5. Save a results plot to `trading_results.png`
 
-### Monitoring Training
+## Results
 
-```bash
-tensorboard --logdir logs/ppo_trading
-```
+After training for 500,000 steps, the agent typically exhibits the following performance:
+
+![Trading Results](src/assets/trading_results.png)
+
+*Note: Past performance is not indicative of future results.*
 
 ---
 
