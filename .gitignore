@@ -220,4 +220,5 @@ src/logs
 *.pkl
 *.zip
 *.png
+!src/assets/*.png
 *.txt
