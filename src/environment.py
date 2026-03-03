@@ -70,6 +70,10 @@ class TradingEnv(gym.Env):
             low=-np.inf, high=np.inf, shape=(obs_size,), dtype=np.float32
         )
 
+        # Precompute technical indicators (prices don't change between steps)
+        self._rsi = self._compute_rsi()
+        self._macd = self._compute_macd_signal()
+
         # Episode tracking
         self.current_step = None
         self.cash = None
@@ -125,12 +129,9 @@ class TradingEnv(gym.Env):
         # Log returns (length = window_size - 1)
         log_returns = np.diff(np.log(np.maximum(price_window, 1e-8)))
 
-        # --- Technical indicators (#14) ---
-        rsi_all = self._compute_rsi()
-        macd_all = self._compute_macd_signal()
-
-        rsi_val = rsi_all[self.current_step]
-        macd_val = macd_all[self.current_step]
+        # --- Technical indicators (precomputed) ---
+        rsi_val = self._rsi[self.current_step]
+        macd_val = self._macd[self.current_step]
 
         # Relative volume (current / rolling 20-day mean)
         vol_start = max(0, self.current_step - 19)

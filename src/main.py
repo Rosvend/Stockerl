@@ -141,14 +141,16 @@ def main():
     print(f"\n Model saved to: {model_path}.zip")
     print(f" VecNormalize stats saved to: {vec_norm_path}")
 
-    # Evaluate agent
+    # Evaluate agent (random_start=False so we cover the full test period,
+    # matching the buy-and-hold baseline window)
+    eval_kwargs = {**env_kwargs, "random_start": False}
     agent_metrics, agent_portfolios = evaluate_agent(
         model,
         test_df,
         num_episodes=5,
         base_seed=SEED,
         vec_normalize_path=vec_norm_path,
-        **env_kwargs,
+        **eval_kwargs,
     )
 
     # Compare with fee-adjusted baseline
